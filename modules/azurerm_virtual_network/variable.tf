@@ -21,7 +21,7 @@ variable "address_space" {
 variable "subnets" {
   description = "Map of subnets to create, each with a name and address prefix"
   type = map(object({
-    name              = string
-    address_prefix    = string
+    name             = string
+    address_prefixes = string
   }))
 }

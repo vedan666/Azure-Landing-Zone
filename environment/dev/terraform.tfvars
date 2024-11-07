@@ -15,11 +15,11 @@ address_space       = ["10.0.0.0/16"]
 # Subnet configurations
 subnets = {
   frontend = {
-    name           = "frontend-subnet"
-    address_prefix = "10.0.1.0/24"
+    name             = "frontend-subnet"
+    address_prefixes = "10.0.1.0/24"
   }
   backend = {
-    name           = "backend-subnet"
-    address_prefix = "10.0.2.0/24"
+    name             = "backend-subnet"
+    address_prefixes = "10.0.2.0/24"
   }
 }

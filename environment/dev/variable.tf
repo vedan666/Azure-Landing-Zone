@@ -38,7 +38,7 @@ variable "subnets" {
   description = "Map of subnets to create, each with a name, address prefix, and optional NSG ID"
   type = map(object({
     name              = string
-    address_prefix    = string
+    address_prefixes  = string
     security_group_id = optional(string, null)
   }))
 }
