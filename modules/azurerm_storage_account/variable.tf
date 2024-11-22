@@ -1,0 +1,2 @@
+variable "stg" {}
+variable "blob" {}

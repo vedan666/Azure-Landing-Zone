@@ -7,7 +7,9 @@ variable "rg_map" {
     )
   )
 }
-
+variable "shared" {
+  type = map(any)
+}
 variable "vnet_map" {
   type = map(any)
 }

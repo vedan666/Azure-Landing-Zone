@@ -1,11 +1,17 @@
-name = "IOT-dev-cind"
 rg_map = {
   rg1 = {
-    resource_group_name = "rg-${var.name}"
+    resource_group_name = "rg-dev-cind-01"
     location            = "centralindia"
   }
 }
-
+shared = {
+  stg1 = {
+    stg_name = "stgdevcind01"
+    location = "centralindia"
+    resource_group_name = "rg-dev-cind-01"
+    blob_name = "tfstate"
+  }
+}
 vnet_map = {
   vnet1 = {
     virtual_network_name = "vnet-dev-sandbox-cind-01"
