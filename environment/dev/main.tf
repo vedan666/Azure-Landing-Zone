@@ -1,14 +1,34 @@
 module "resource" {
-  source = "../../modules/azurerm_resource_group"
-  rg     = var.rg
+  source = "../../Modules/ResourceGroup"
+  rg_map = var.rg_map
 }
 
 module "vnet" {
-  source              = "../../modules/azurerm_virtual_network"
-  depends_on          = [module.resource]
-  vnet_name           = var.vnet_name
-  location            = var.location
-  resource_group_name = var.resource_group_name
-  address_space       = var.address_space
-  subnets             = var.subnets
+  source = "../../Modules/Vnet"
+  vnet_map = var.vnet_map
+  depends_on = [ module.resource ]
+}
+
+module "subnet" {
+  source = "../../Modules/Subnet"
+  subnet_map = var.subnet_map
+  depends_on = [ module.vnet ]
+}
+
+module "vm" {
+  source = "../../Modules/Vm"
+  vm_map = var.vm_map
+  depends_on = [ module.subnet , module.resource ]
+}
+
+module "pip" {
+  source = "../../Modules/Public_ip"
+  pip_map = var.pip_map
+  depends_on = [ module.vm ]
+}
+
+module "bastion" {
+  source = "../../Modules/Bastion"
+  bastion_map = var.bastion_map
+  depends_on = [ module.vm , module.pip]
 }

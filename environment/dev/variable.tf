@@ -1,5 +1,4 @@
-variable "rg" {
-  description = "A map of Resource Groups to create, where key is the RG identifier and value contains name and location."
+variable "rg_map" {
   type = map(object(
     {
       name     = string
@@ -9,36 +8,26 @@ variable "rg" {
   )
 }
 
-# Define the name of the Virtual Network
-variable "vnet_name" {
-  description = "Name of the Virtual Network"
-  type        = string
+variable "vnet_map" {
+  type = map(any)
 }
 
-# Define the location/region for the Virtual Network
-variable "location" {
-  description = "Azure region where VNet will be created"
-  type        = string
+variable "subnet_map" {
+  type = map(any)
 }
 
-# Define the name of the Resource Group where the VNet will be created
-variable "resource_group_name" {
-  description = "Name of the Resource Group where VNet will be created"
-  type        = string
+variable "vm_map" {
+  type = map(any)
 }
 
-# Define the address space for the Virtual Network
-variable "address_space" {
-  description = "The address space for the Virtual Network"
-  type        = list(string)
+variable "pip_map" {
+  type = map(any)
 }
 
-# Define the subnets as a map, where each subnet has a name, address prefix, and optional security group ID
-variable "subnets" {
-  description = "Map of subnets to create, each with a name, address prefix, and optional NSG ID"
-  type = map(object({
-    name              = string
-    address_prefixes  = string
-    security_group_id = optional(string, null)
-  }))
+variable "bastion_map" {
+  type = map(any)
+}
+
+variable "name" {
+  type = string
 }
